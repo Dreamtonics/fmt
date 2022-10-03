@@ -66,7 +66,7 @@ TEST(scan_test, read_string_view) {
 }
 
 #ifndef _WIN32
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct scanner<tm> {
   std::string format;
 

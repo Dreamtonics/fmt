@@ -13,7 +13,7 @@ struct test {};
 
 // Test that there is no issues with specializations when fmt/ostream.h is
 // included after fmt/format.h.
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct formatter<test> : formatter<int> {
   auto format(const test&, format_context& ctx) -> decltype(ctx.out()) {
     return formatter<int>::format(42, ctx);
@@ -178,7 +178,7 @@ std::ostream& operator<<(std::ostream& os, test_template<T>) {
   return os << 1;
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <typename T> struct formatter<test_template<T>> : formatter<int> {
   auto format(test_template<T>, format_context& ctx) -> decltype(ctx.out()) {
     return formatter<int>::format(2, ctx);

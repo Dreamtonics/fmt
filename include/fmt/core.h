@@ -8,6 +8,9 @@
 #ifndef FMT_CORE_H_
 #define FMT_CORE_H_
 
+namespace dreamtonics_fmt {}
+namespace fmt = dreamtonics_fmt;
+
 #include <cstdio>  // std::FILE
 #include <cstring>
 #include <iterator>
@@ -220,7 +223,7 @@
 
 #ifndef FMT_BEGIN_NAMESPACE
 #  define FMT_BEGIN_NAMESPACE \
-    namespace fmt {           \
+    namespace dreamtonics_fmt {           \
     inline namespace v8 {
 #  define FMT_END_NAMESPACE \
     }                       \
