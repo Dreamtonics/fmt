@@ -36,7 +36,6 @@
 #else
 #  define FMT_USE_FCNTL 0
 #endif
-#define FMT_NOEXCEPT noexcept
 #if defined(_WIN32) && !defined(__MINGW32__)
 #  define FMT_POSIX(call) _##call
 #else
@@ -73,6 +72,7 @@ namespace detail {
 bool oops_detail_namespace_is_visible;
 }
 
+namespace dreamtonics_fmt {
 namespace fmt {
 bool namespace_detail_invisible() {
 #if defined(FMT_HIDE_MODULE_BUGS) && defined(_MSC_FULL_VER) && \
@@ -90,6 +90,7 @@ bool namespace_detail_invisible() {
 #endif
 }
 }  // namespace fmt
+}  // namespace dreamtonics_fmt
 
 // the non-exported namespace 'detail' must be invisible [module.interface]/2
 TEST(module_test, detail_namespace) {
@@ -194,13 +195,6 @@ TEST(module_test, wformat_args) {
   EXPECT_FALSE(no_args.get(1));
   fmt::basic_format_args args = fmt::make_wformat_args(42);
   EXPECT_TRUE(args.get(0));
-}
-
-TEST(module_test, checked_format_args) {
-  fmt::basic_format_args args = fmt::make_args_checked<int>("{}", 42);
-  EXPECT_TRUE(args.get(0));
-  fmt::basic_format_args wargs = fmt::make_args_checked<int>(L"{}", 42);
-  EXPECT_TRUE(wargs.get(0));
 }
 
 TEST(module_test, dynamic_format_args) {

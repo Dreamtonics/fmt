@@ -68,7 +68,7 @@ module;
 #  include <windows.h>
 #endif
 
-export module dreamtonics_fmt;
+export module fmt;
 
 #define FMT_MODULE_EXPORT export
 #define FMT_MODULE_EXPORT_BEGIN export {

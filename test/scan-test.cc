@@ -67,6 +67,7 @@ TEST(scan_test, read_string_view) {
 
 #ifndef _WIN32
 namespace dreamtonics_fmt {
+namespace fmt {
 template <> struct scanner<tm> {
   std::string format;
 
@@ -89,6 +90,7 @@ template <> struct scanner<tm> {
   }
 };
 }  // namespace fmt
+}  // namespace dreamtonics_fmt
 
 TEST(scan_test, read_custom) {
   auto input = "Date: 1985-10-25";
