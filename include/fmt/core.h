@@ -17,6 +17,9 @@
 #include <string>
 #include <type_traits>
 
+namespace dreamtonics_fmt {}
+namespace fmt = dreamtonics_fmt;
+
 // The fmt library version in the form major * 10000 + minor * 100 + patch.
 #define FMT_VERSION 100100
 
@@ -172,7 +175,7 @@
 
 #ifndef FMT_BEGIN_NAMESPACE
 #  define FMT_BEGIN_NAMESPACE \
-    namespace fmt {           \
+    namespace dreamtonics_fmt {           \
     inline namespace v10 {
 #  define FMT_END_NAMESPACE \
     }                       \

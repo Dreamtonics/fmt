@@ -215,7 +215,7 @@ std::wostream& operator<<(std::wostream& os, streamable_enum) {
   return os << L"streamable_enum";
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <>
 struct formatter<streamable_enum, wchar_t> : basic_ostream_formatter<wchar_t> {
 };

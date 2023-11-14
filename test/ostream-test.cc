@@ -15,7 +15,7 @@ struct test {};
 
 // Test that there is no issues with specializations when fmt/ostream.h is
 // included after fmt/format.h.
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct formatter<test> : formatter<int> {
   auto format(const test&, format_context& ctx) -> decltype(ctx.out()) {
     return formatter<int>::format(42, ctx);
@@ -61,7 +61,7 @@ auto operator<<(std::ostream& os, empty_test) -> std::ostream& {
   return os << "";
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct formatter<test_string> : ostream_formatter {};
 template <> struct formatter<date> : ostream_formatter {};
 template <> struct formatter<streamable_enum> : ostream_formatter {};
@@ -199,7 +199,7 @@ auto operator<<(std::ostream& os, test_template<T>) -> std::ostream& {
   return os << 1;
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <typename T> struct formatter<test_template<T>> : formatter<int> {
   auto format(test_template<T>, format_context& ctx) -> decltype(ctx.out()) {
     return formatter<int>::format(2, ctx);
@@ -234,7 +234,7 @@ std::ostream& operator<<(std::ostream& os, copyfmt_test) {
   return os << "foo";
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct formatter<copyfmt_test> : ostream_formatter {};
 }  // namespace fmt
 
@@ -259,7 +259,7 @@ struct abstract {
   }
 };
 
-namespace fmt {
+namespace dreamtonics_fmt {
 template <> struct formatter<abstract> : ostream_formatter {};
 }  // namespace fmt
 

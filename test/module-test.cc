@@ -64,7 +64,7 @@ namespace detail {
 bool oops_detail_namespace_is_visible;
 }
 
-namespace fmt {
+namespace dreamtonics_fmt {
 bool namespace_detail_invisible() {
 #if defined(FMT_HIDE_MODULE_BUGS) && defined(_MSC_FULL_VER) && \
     _MSC_FULL_VER <= 193700000

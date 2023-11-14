@@ -1926,7 +1926,7 @@ TEST(format_test, non_null_terminated_format_string) {
 }
 
 namespace adl_test {
-namespace fmt {
+namespace dreamtonics_fmt {
 namespace detail {
 struct foo {};
 template <typename, typename OutputIt> void write(OutputIt, foo) = delete;
@@ -1936,8 +1936,8 @@ template <typename, typename OutputIt> void write(OutputIt, foo) = delete;
 
 FMT_BEGIN_NAMESPACE
 template <>
-struct formatter<adl_test::fmt::detail::foo> : formatter<std::string> {
-  auto format(adl_test::fmt::detail::foo, format_context& ctx)
+struct formatter<adl_test::dreamtonics_fmt::detail::foo> : formatter<std::string> {
+  auto format(adl_test::dreamtonics_fmt::detail::foo, format_context& ctx)
       -> decltype(ctx.out()) {
     return formatter<std::string>::format("foo", ctx);
   }
@@ -1947,7 +1947,7 @@ FMT_END_NAMESPACE
 TEST(format_test, to_string) {
   EXPECT_EQ(fmt::to_string(42), "42");
   EXPECT_EQ(fmt::to_string(reinterpret_cast<void*>(0x1234)), "0x1234");
-  EXPECT_EQ(fmt::to_string(adl_test::fmt::detail::foo()), "foo");
+  EXPECT_EQ(fmt::to_string(adl_test::dreamtonics_fmt::detail::foo()), "foo");
   EXPECT_EQ(fmt::to_string(foo), "0");
 
 #if FMT_USE_FLOAT128
