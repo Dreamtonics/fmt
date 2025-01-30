@@ -8,6 +8,9 @@
 #ifndef FMT_BASE_H_
 #define FMT_BASE_H_
 
+namespace dreamtonics { namespace fmt {} }
+namespace fmt = dreamtonics::fmt;
+
 #if defined(FMT_IMPORT_STD) && !defined(FMT_MODULE)
 #  define FMT_MODULE
 #endif
@@ -251,9 +254,11 @@
 
 #ifndef FMT_BEGIN_NAMESPACE
 #  define FMT_BEGIN_NAMESPACE \
+    namespace dreamtonics {   \
     namespace fmt {           \
     inline namespace v11 {
 #  define FMT_END_NAMESPACE \
+    }                       \
     }                       \
     }
 #endif
